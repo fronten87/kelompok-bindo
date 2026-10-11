@@ -42,7 +42,7 @@ const project = {
   image: "assets/project/project-preview.jpg",
   year: "2026",
   technologies: ["HTML", "CSS", "JavaScript"],
-  projectUrl: "https://lancarabadi.my.id"
+  projectUrl: "https://businessplan.projectfid.my.id/"
 };
 
 const gallery = [
