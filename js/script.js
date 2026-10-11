@@ -38,7 +38,7 @@ const members = [
 
 const project = {
   title: "MATERI BUSINESS PLAN",
-  description: "Nexora Creative merupakan usaha jasa digital yang bergerak di bidang web development dan graphic design. Jasa ini membantu mahasiswa, UMKM, organisasi, startup, hingga perusahaan dalam membuat website dan kebutuhan desain yang sesuai dengan kebutuhan mereka.",
+  description: "WEB-in Aja merupakan usaha jasa digital yang bergerak di bidang web development dan graphic design. Jasa ini membantu mahasiswa, UMKM, organisasi, startup, hingga perusahaan dalam membuat website dan kebutuhan desain yang sesuai dengan kebutuhan mereka.",
   image: "assets/project/project-preview.jpg",
   year: "2026",
   technologies: ["HTML", "CSS", "JavaScript"],
@@ -54,7 +54,6 @@ const gallery = [
 ];
 
 const membersGrid = document.getElementById("members-grid");
-const galleryGrid = document.getElementById("gallery-grid");
 
 function renderMembers() {
   membersGrid.innerHTML = members.map((member, index) => `
@@ -76,17 +75,6 @@ function renderMembers() {
   `).join("");
 }
 
-function renderGallery() {
-  galleryGrid.innerHTML = gallery.map((item, index) => `
-    <button class="gallery-item reveal lightbox-trigger" type="button"
-      data-lightbox="gallery-${index + 1}" aria-label="Buka dokumentasi ${item.label}">
-      <img src="${item.image}" alt="Dokumentasi ${item.label}" loading="lazy"
-        onerror="this.style.opacity='.25';">
-      <span class="gallery-label">${item.label}</span>
-    </button>
-  `).join("");
-}
-
 function renderProject() {
   document.getElementById("project-title").textContent = project.title;
   document.getElementById("project-description").textContent = project.description;
@@ -97,7 +85,6 @@ function renderProject() {
 }
 
 renderMembers();
-renderGallery();
 renderProject();
 
 const header = document.getElementById("site-header");
@@ -185,13 +172,23 @@ const lightboxCaption = document.getElementById("lightbox-caption");
 const lightboxClose = document.querySelector(".lightbox-close");
 
 const lightboxSources = {
-  "project-preview": { src: project.image, alt: project.title },
-  "screenshot-1": { src: "assets/project/screenshot-1.jpg", alt: "Screenshot project 1" },
-  "screenshot-2": { src: "assets/project/screenshot-2.jpg", alt: "Screenshot project 2" },
-  "screenshot-3": { src: "assets/project/screenshot-3.jpg", alt: "Screenshot project 3" },
-  ...Object.fromEntries(gallery.map((item, i) => [`gallery-${i + 1}`, { src: item.image, alt: item.label }]))
+  "project-preview": {
+    src: project.image,
+    alt: project.title
+  },
+  "screenshot-1": {
+    src: "assets/project/screenshot-1.jpg",
+    alt: "Screenshot project 1"
+  },
+  "screenshot-2": {
+    src: "assets/project/screenshot-2.jpg",
+    alt: "Screenshot project 2"
+  },
+  "screenshot-3": {
+    src: "assets/project/screenshot-3.jpg",
+    alt: "Screenshot project 3"
+  }
 };
-
 function openLightbox(key) {
   const item = lightboxSources[key];
   if (!item) return;
